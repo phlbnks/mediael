@@ -23,7 +23,7 @@ If you get errors it is likely there are hidden files bring included. Often occu
 (Optional - Step 2b: On the plugin page in Joomla you can set defaults if you want.)
 
 
-### Step 4: Insert the shortcode into an article. 
+### Step 3: Insert the shortcode into an article. 
 
 Video:
 
