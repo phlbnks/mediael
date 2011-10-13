@@ -39,11 +39,16 @@ If you don't want to encode multiple versions of a movie, MP4 can be played in a
 
 Coming Next
 -----------
-- Clean up and check code. 
-- Try to improve flexibilty.
+- Add support for more MEJS variables.
+- Add support for each player having different setup variables. 
+- (Permenant..) Clean up and check code. 
 
 Changelog
 ---------
+0.3 (2011-10-13)
+
+- Cleaned up output in Head. Removed codec declaration from <video> src.
+
 0.2 (2011-10-13)
 
 - Added support for Joomla v1.6 (untested)

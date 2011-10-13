@@ -25,6 +25,21 @@ class plgContentBo_VideoJS extends JPlugin {
         if (!empty($hits)) {
             $document =& JFactory::getDocument();
             
+            
+            // Check if mediaelsentials stylesheets are loaded
+            $styleSheets = array_keys($document->_styleSheets);
+            
+            $foundmediaelStyles = false;
+            for ($i = 0; $i<count($styleSheets); $i++) {
+                if (stripos($styleSheets[$i], 'mediaelementplayer.min.css') !== false) {
+                    $foundmediaelStyles = true;
+                }
+            }
+            if (!$foundmediaelStyles) {
+                $document->addStyleSheet(JURI::base().'plugins/content/pb_mediael/mediaelementplayer.min.css');
+            }
+            
+            
             // Check if mediaelsentials script is loaded
             $scripts = array_keys($document->_scripts);
             $foundJqueryScripts = false;
@@ -51,59 +66,39 @@ class plgContentBo_VideoJS extends JPlugin {
                     $foundMediaeljsScripts = true;
                 }
             }
-            if (!$foundMediaelJScripts) {
-                
             
-            for ($i=$GLOBALS['plg_pb_mediael']; $i<$GLOBALS['plg_pb_mediael']+$hits; $i++) {
-                $document->addScriptDeclaration('
-                var $j = jQuery.noConflict();
-                $j(document).ready(function() {
-                    //$j(".PbMediaEl").hide();
-                    $j("video,audio").mediaelementplayer({
-                        startVolume: 			'.$pluginParams->get('defaultVolume', '0.85').',
-                        enableAutosize:			true,
-                    });
-                });
-                ');
-            
-            
-                for ($j=0; $j<$hits; $j++) {
-                    $videoParams = $matches[1][$j];
-                    $videoParamsList = contentPbMediaEl_getParams($videoParams, $pluginParams);
-                    $html = contentPbMediaEl_createHTML($i+$j, $pluginParams, $videoParamsList);
-                    $pattern = str_replace('[', '\[', $matches[0][$j]);
-                    $pattern = str_replace(']', '\]', $pattern);
-                    $pattern = str_replace('/', '\/', $pattern);
-                    $row->text = preg_replace('/'.$pattern.'/', $html, $row->text, 1);
-                }
-            }
-            
-            }
-            
-            
-            // Count instances
-            $GLOBALS['plg_pb_mediael'] += $hits;
-        
-            // Check if mediaelsentials stylesheets are loaded
-            $styleSheets = array_keys($document->_styleSheets);
-            
-            $foundmediaelStyles = false;
-            for ($i = 0; $i<count($styleSheets); $i++) {
-                if (stripos($styleSheets[$i], 'mediaelementplayer.min.css') !== false) {
-                    $foundmediaelStyles = true;
-                }
-            }
-            if (!$foundmediaelStyles) {
-                $document->addStyleSheet(JURI::base().'plugins/content/pb_mediael/mediaelementplayer.min.css');
-            }
-            
-        } else {
-            return false;
-        }
-        
-        return true;	
-        
-    }
+            $document->addScriptDeclaration('	var $j = jQuery.noConflict();
+			$j(document).ready(function() {
+				$j("video,audio").mediaelementplayer({
+					startVolume: 			'.$pluginParams->get('defaultVolume', '0.85').',
+					enableAutosize:			true,
+				});
+		});');
+		
+			// Parse shortcodes in content
+				for ($i=$GLOBALS['plg_pb_mediael']; $i<$GLOBALS['plg_pb_mediael']+$hits; $i++) {
+					for ($j=0; $j<$hits; $j++) {
+						$videoParams = $matches[1][$j];
+						$videoParamsList = contentPbMediaEl_getParams($videoParams, $pluginParams);
+						$html = contentPbMediaEl_createHTML($i+$j, $pluginParams, $videoParamsList);
+						$pattern = str_replace('[', '\[', $matches[0][$j]);
+						$pattern = str_replace(']', '\]', $pattern);
+						$pattern = str_replace('/', '\/', $pattern);
+		    			$row->text = preg_replace('/'.$pattern.'/', $html, $row->text, 1);
+					}
+				}
+		
+		
+			// Count instances
+			$GLOBALS['plg_pb_mediael'] += $hits;
+		
+		} else {
+			return false;
+		}
+	
+		return true;	
+	
+	}
     
     protected function contentPbMediaEl_getParams($videoParams, $pluginParams) {
         
@@ -200,19 +195,19 @@ class plgContentBo_VideoJS extends JPlugin {
         $html = '<'.$media.' width="'.$width.'" height="'.$height.'" controls="controls"'.$autoplay_html.$preload_html.$loop_html.$poster_html.'">';
         
         if ($audio_mp3 != "") {
-            $html .= '<source src="'.$audio_mp3.'" type=\'audio/mp3\' />';
+            $html .= '<source src="'.$audio_mp3.'" type="audio/mp3" />';
         }
         
         if ($video_mp4 != "") {
-            $html .= '<source src="'.$video_mp4.'" type="video/mp4; codecs=\'avc1.42E01E, mp4a.40.2\'" />';
+            $html .= '<source src="'.$video_mp4.'" type="video/mp4" />';
         }
         
         if ($video_webm != "") {
-            $html .= '<source src="'.$video_webm.'" type=\'video/webm; codecs="vp8, vorbis"\' />';
+            $html .= '<source src="'.$video_webm.'" type="video/webm" />';
         }
     
         if ($video_ogg != "") {
-            $html .= '<source src="'.$video_ogg.'" type=\'video/ogg; codecs="theora, vorbis"\' />';
+            $html .= '<source src="'.$video_ogg.'" type="video/ogg" />';
         }
         
         if ($flash != "") {
