@@ -42,7 +42,7 @@ If you don't want to encode multiple versions of a movie, MP4 can be played in a
 
 Coming Next
 -----------
-- Yest under Joomla 1.6
+- Test under Joomla 1.6
 - Add support for more MEJS variables.
 - Add support for each player having different setup variables.
 - Add pre-compressed versions for immediate use.
