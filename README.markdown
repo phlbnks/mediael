@@ -39,6 +39,15 @@ If you don't want to encode multiple versions of a movie, MP4 can be played in a
 
 Coming Next
 -----------
-- Joomla 1.6 version.
 - Clean up and check code. 
 - Try to improve flexibilty.
+
+Changelog
+---------
+0.2 (2011-10-13)
+
+- Added support for Joomla v1.6 (untested)
+
+0.1 (2011-10-13)
+
+- First Release

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" method="upgrade" group="content">
+	<name>Content - pb:MediaEl</name>
+	<author>Phil Banks</author>
+	<creationDate>October 2011</creationDate>
+	<copyright>(C) 2011 Phil Banks. All rights reserved.</copyright>
+	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+	<authorEmail>pb@mrc-lmb.cam.ac.uk</authorEmail>
+	<authorUrl>www2.mrc-lmb.cam.ac.uk</authorUrl>
+	<version>0.2</version>
+	<description>PLUGIN DESC</description>
+	<files>
+		<folder>media</folder>
+		<folder>language</folder>
+		<filename plugin="pb_mediael">pb_mediael.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.plg_content_pb_mediael.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="media" type="list" default="video" label="LABEL MEDIA" description="DESC MEDIA">
+					<option value="video">video</option>
+					<option value="audio">audio</option>
+				</field>
+				<field name="@spacer" type="spacer" default="DEFAULT AUDIO PARAMETER" label="" description="" />
+				<field name="audio_mp3" type="text" default="" label="LABEL AUDIO MP3" description="DESC AUDIO MP3" size="40" />
+				<field name="@spacer" type="spacer" default="DEFAULT VIDEO PARAMETER" label="" description="" />
+				<field name="video_mp4" type="text" default="" label="LABEL VIDEO MP4" description="DESC VIDEO MP4" size="40" />
+				<field name="video_webm" type="text" default="" label="LABEL VIDEO WEBM" description="DESC VIDEO WEBM" size="40" />
+				<field name="video_ogg" type="text" default="" label="LABEL VIDEO OGG" description="DESC VIDEO OGG" size="40" />
+				<field name="flash" type="text" default="" label="LABEL FLASH" description="DESC FLASH" size="40" />
+				<field name="image" type="text" default="" label="LABEL IMAGE" description="DESC IMAGE" size="40" />
+				<field name="image_visibility" type="radio" default="1" label="LABEL IMAGE VISIBILITY" description="DESC IMAGE VISIBILITY">
+					<option value="0">off</option>
+					<option value="1">on</option>
+				</field>
+				<field name="@spacer" type="spacer" default="DEFAULT PLAYER PARAMETER" label="" description="" />
+				<field name="width" type="text" default="640" label="LABEL WIDTH" description="DESC WIDTH" size="3" />
+				<field name="height" type="text" default="480" label="LABEL HEIGHT" description="DESC HEIGHT" size="3" />
+				<field name="autoplay" type="radio" default="0" label="LABEL AUTOPLAY" description="DESC AUTOPLAY">
+					<option value="0">off</option>
+					<option value="1">on</option>
+				</field>
+				<field name="preload" type="radio" default="1" label="LABEL PRELOAD" description="DESC PRELOAD">
+					<option value="0">off</option>
+					<option value="1">on</option>
+				</field>
+				<field name="loop" type="radio" default="0" label="LABEL LOOP" description="DESC LOOP">
+					<option value="0">off</option>
+					<option value="1">on</option>
+				</field>
+				<field name="defaultVolume" type="text" default="0.85" label="LABEL DEFAULT VOLUME" description="DESC DEFAULT VOLUME" size="3" />
+				<field name="wmode" type="list" default="default" label="LABEL WMODE" description="DESC WMODE">
+					<option value="default">default</option>
+					<option value="opaque">opaque</option>
+					<option value="transparent">transparent</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
