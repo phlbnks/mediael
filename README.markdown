@@ -19,9 +19,8 @@ If you get errors it is likely there are hidden files bring included. Often occu
 
 ### Step 2: Enable the plugin in Joomla.
 
-  
-### Step 3: On the plugin page in Joomla you can set defaults if you want. 
-(Optional step).
+
+(Optional - Step 2b: On the plugin page in Joomla you can set defaults if you want.)
 
 
 ### Step 4: Insert the shortcode into an article. 
