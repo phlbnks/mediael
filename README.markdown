@@ -1,6 +1,6 @@
 MediaEl - [MediaElement.js HTML5 Video Player plugin for Joomla]
 ==================================================
-Version 0.1
+Version 0.3
 
 HTML5 <video> / <audio> code generator with fallback to Flash and Silverlight - if desired. 
 View [mediaelementjs.com](http://mediaelementjs.com) for a demo of MedialElement.js and overview.
@@ -40,7 +40,8 @@ If you don't want to encode multiple versions of a movie, MP4 can be played in a
 Coming Next
 -----------
 - Add support for more MEJS variables.
-- Add support for each player having different setup variables. 
+- Add support for each player having different setup variables.
+- Add pre-compressed versions for immediate use.
 - (Permenant..) Clean up and check code. 
 
 Changelog
