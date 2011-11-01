@@ -27,12 +27,12 @@ function pluginPbMediaEl(&$row, &$params) {
 		
 		$foundmediaelStyles = false;
 		for ($i = 0; $i<count($styleSheets); $i++) {
-			if (stripos($styleSheets[$i], 'mediaelementplayer.css') !== false) {
+			if (stripos($styleSheets[$i], 'mediaelementplayer.min.css') !== false) {
 				$foundmediaelStyles = true;
 			}
 		}
 		if (!$foundmediaelStyles) {
-			$document->addStyleSheet(JURI::base().'plugins/content/pb_mediael/mediaelementplayer.css');
+			$document->addStyleSheet(JURI::base().'plugins/content/pb_mediael/mediaelementplayer.min.css');
 		}
 		
 		
@@ -104,8 +104,12 @@ function contentPbMediaEl_getParams($videoParams, $pluginParams) {
 	$videoParamsList['autoplay']			= $pluginParams->get('autoplay');
 	$videoParamsList['preload']				= $pluginParams->get('preload');
 	$videoParamsList['loop']				= $pluginParams->get('loop');
+	$videoParamsList['audio_m4a']			= $pluginParams->get('audio_m4a');
 	$videoParamsList['audio_mp3']			= $pluginParams->get('audio_mp3');
+	$videoParamsList['audio_mpeg']			= $pluginParams->get('audio_mpeg');
 	$videoParamsList['video_mp4']			= $pluginParams->get('video_mp4');
+	$videoParamsList['video_m4v']			= $pluginParams->get('video_m4v');
+	$videoParamsList['video_mov']			= $pluginParams->get('video_mov');
 	$videoParamsList['video_webm']			= $pluginParams->get('video_webm');
 	$videoParamsList['video_ogg'] 			= $pluginParams->get('video_ogg');
 	$videoParamsList['image'] 				= $pluginParams->get('image');
@@ -134,8 +138,12 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	$autoplay			= $videoParamsList['autoplay'];
 	$preload			= $videoParamsList['preload'];
 	$loop				= $videoParamsList['loop'];
+	$audio_m4a			= $videoParamsList['audio_m4a'];
 	$audio_mp3			= $videoParamsList['audio_mp3'];
+	$audio_mpeg			= $videoParamsList['audio_mpeg'];
 	$video_mp4			= $videoParamsList['video_mp4'];
+	$video_m4v			= $videoParamsList['video_m4v'];
+	$video_mov			= $videoParamsList['video_mov'];
 	$video_webm			= $videoParamsList['video_webm'];
 	$video_ogg			= $videoParamsList['video_ogg'];
 	$flash				= $videoParamsList['flash'];
@@ -190,18 +198,28 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	// HTML output
 	$html = '<'.$media.' width="'.$width.'" height="'.$height.'" controls="controls"'.$autoplay_html.$preload_html.$loop_html.$poster_html.'">';
 	
+	if ($audio_m4a != "") {
+		$html .= '<source src="'.$audio_m4a.'" type="audio/m4a" />';
+	}
 	if ($audio_mp3 != "") {
 		$html .= '<source src="'.$audio_mp3.'" type="audio/mp3" />';
+	}
+	if ($audio_mpeg != "") {
+		$html .= '<source src="'.$audio_mpeg.'" type="audio/mpeg" />';
 	}
 	
 	if ($video_mp4 != "") {
 		$html .= '<source src="'.$video_mp4.'" type="video/mp4" />';
 	}
-	
+	if ($video_m4v != "") {
+		$html .= '<source src="'.$video_m4v.'" type="video/m4v" />';
+	}
+	if ($video_mov != "") {
+		$html .= '<source src="'.$video_mov.'" type="video/mov" />';
+	}
 	if ($video_webm != "") {
 		$html .= '<source src="'.$video_webm.'" type="video/webm" />';
 	}
-
 	if ($video_ogg != "") {
 		$html .= '<source src="'.$video_ogg.'" type="video/ogg" />';
 	}
@@ -224,24 +242,33 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	
 	$html .='<p class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
 	
+	if ($audio_m4a != "") {
+		$html .= '<a href="'.$audio_m4a.'">M4A</a> ';
+	}
 	if ($audio_mp3 != "") {
 		$html .= '<a href="'.$audio_mp3.'">MP3</a> ';
+	}
+	if ($audio_mpeg != "") {
+		$html .= '<a href="'.$audio_mpeg.'">MPEG</a> ';
 	}
 	
 	if ($video_mp4 != "") {
 		$html .= '<a href="'.$video_mp4.'">MP4</a> ';
 	}
-	
+	if ($video_m4v != "") {
+		$html .= '<a href="'.$video_m4v.'">M4V</a> ';
+	}
+	if ($video_mov != "") {
+		$html .= '<a href="'.$video_mov.'">MOV</a> ';
+	}
 	if ($video_webm != "") {
 		$html .= '<a href="'.$video_webm.'">WebM</a> ';
 	}
-	
 	if ($video_ogg != "") {
 		$html .= '<a href="'.$video_ogg.'">Ogg</a><br>';
 	}
 
-	$html .= '</p>
-  		</div>';
+	$html .= '</p>';
 	
 	$html .= '</'.$media.'>';
 			

@@ -7,7 +7,7 @@
 	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
 	<authorEmail>pb@mrc-lmb.cam.ac.uk</authorEmail>
 	<authorUrl>www2.mrc-lmb.cam.ac.uk</authorUrl>
-	<version>0.3</version>
+	<version>0.4</version>
 	<description>PLUGIN DESC</description>
 	<files>
 		<filename plugin="pb_mediael">pb_mediael.php</filename>
@@ -22,9 +22,13 @@
 			<option value="audio">audio</option>
 		</param>
 		<param name="@spacer" type="spacer" default="DEFAULT AUDIO PARAMETER" label="" description="" />
+		<param name="audio_m4a" type="text" default="" label="LABEL AUDIO M4A" description="DESC AUDIO M4A" size="40" />
 		<param name="audio_mp3" type="text" default="" label="LABEL AUDIO MP3" description="DESC AUDIO MP3" size="40" />
+		<param name="audio_mpeg" type="text" default="" label="LABEL AUDIO MPEG" description="DESC AUDIO MPEG" size="40" />
 		<param name="@spacer" type="spacer" default="DEFAULT VIDEO PARAMETER" label="" description="" />
 		<param name="video_mp4" type="text" default="" label="LABEL VIDEO MP4" description="DESC VIDEO MP4" size="40" />
+		<param name="video_m4v" type="text" default="" label="LABEL VIDEO M4V" description="DESC VIDEO M4V" size="40" />
+		<param name="video_mov" type="text" default="" label="LABEL VIDEO MOV" description="DESC VIDEO MOV" size="40" />
 		<param name="video_webm" type="text" default="" label="LABEL VIDEO WEBM" description="DESC VIDEO WEBM" size="40" />
 		<param name="video_ogg" type="text" default="" label="LABEL VIDEO OGG" description="DESC VIDEO OGG" size="40" />
 		<param name="flash" type="text" default="" label="LABEL FLASH" description="DESC FLASH" size="40" />

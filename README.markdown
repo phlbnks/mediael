@@ -1,6 +1,6 @@
 MediaEl - [MediaElement.js HTML5 Video Player plugin for Joomla]
 ==================================================
-Version 0.3
+Version 0.4
 
 HTML5 <video> / <audio> code generator with fallback to Flash and Silverlight - if desired. 
 View [mediaelementjs.com](http://mediaelementjs.com) for a demo of MedialElement.js and overview.
@@ -50,6 +50,12 @@ Coming Next
 
 Changelog
 ---------
+0.4 (2011-11-1)
+
+- Updated to MediaElement.js 2.2.5
+- Added explicit support for .mov, .m4v, .m4a and .mpeg
+- Fixed errant `</div>`
+
 0.3 (2011-10-13)
 
 - Cleaned up output in Head. Removed codec declaration from <video> src.
