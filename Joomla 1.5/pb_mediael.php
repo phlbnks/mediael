@@ -150,7 +150,6 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	$video_ogg			= $videoParamsList['video_ogg'];
 	$flash				= $videoParamsList['flash'];
 	$image 				= $videoParamsList['image'];
-	$download 			= $videoParamsList['download'];
 	$image_visibility	= $videoParamsList['image_visibility'];
 	$wmode				= $pluginParams->get('wmode', 'default');
 	$uri_flash			= '';
