@@ -7,7 +7,7 @@
 	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
 	<authorEmail>pb@mrc-lmb.cam.ac.uk</authorEmail>
 	<authorUrl>www2.mrc-lmb.cam.ac.uk</authorUrl>
-	<version>0.5</version>
+	<version>0.6b</version>
 	<description>PLUGIN DESC</description>
 	<files>
 		<filename plugin="pb_mediael">pb_mediael.php</filename>
@@ -57,6 +57,10 @@
 			<option value="default">default</option>
 			<option value="opaque">opaque</option>
 			<option value="transparent">transparent</option>
+		</param>
+		<param name="download" type="radio" default="0" label="LABEL DOWNLOAD" description="DESC DOWNLOAD">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
 		</param>
 	</params>
 </install>

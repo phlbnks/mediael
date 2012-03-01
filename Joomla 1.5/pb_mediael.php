@@ -45,7 +45,7 @@ function pluginPbMediaEl(&$row, &$params) {
 			}
 		}
 		if (!$foundJqueryScripts) {
-			$document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
+			$document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
 		}
 		$foundMediaelScripts = false;
 		for ($i = 0; $i<count($scripts); $i++) {
@@ -66,6 +66,7 @@ function pluginPbMediaEl(&$row, &$params) {
 		$document->addScriptDeclaration('
 		var $j = jQuery.noConflict();
 		$j(document).ready(function() {
+			'$download = $pluginParams->get('download'); if ($download == "false" || $download == "0") {'$j(".PbMediaEl").hide();'}'
 			$j("video,audio").mediaelementplayer({
 				startVolume: 			'.$pluginParams->get('defaultVolume', '0.85').',
 				enableAutosize:			true,
@@ -149,6 +150,7 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	$video_ogg			= $videoParamsList['video_ogg'];
 	$flash				= $videoParamsList['flash'];
 	$image 				= $videoParamsList['image'];
+	$download 			= $videoParamsList['download'];
 	$image_visibility	= $videoParamsList['image_visibility'];
 	$wmode				= $pluginParams->get('wmode', 'default');
 	$uri_flash			= '';
@@ -241,7 +243,9 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
       	$html .= '</object>';
 	}
 	
-	$html .='<span class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
+	$html .= '</'.$media.'>';
+	
+	$html .='<p class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
 	
 	if ($audio_m4a != "") {
 		$html .= '<a href="'.$audio_m4a.'">M4A</a> ';
@@ -269,9 +273,7 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 		$html .= '<a href="'.$video_ogg.'">Ogg</a><br>';
 	}
 
-	$html .= '</span>';
-	
-	$html .= '</'.$media.'>';
+	$html .= '</p>';
 			
 
 	return $html;
