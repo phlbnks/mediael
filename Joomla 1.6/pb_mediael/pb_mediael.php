@@ -49,7 +49,7 @@ class plgContentBo_VideoJS extends JPlugin {
                 }
             }
             if (!$foundJqueryScripts) {
-                $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
+                $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
             }
             $foundMediaelScripts = false;
             for ($i = 0; $i<count($scripts); $i++) {
@@ -67,13 +67,14 @@ class plgContentBo_VideoJS extends JPlugin {
                 }
             }
             
-            $document->addScriptDeclaration('	var $j = jQuery.noConflict();
+            $document->addScriptDeclaration('
+            var $j = jQuery.noConflict();
 			$j(document).ready(function() {
 				$j("video,audio").mediaelementplayer({
 					startVolume: 			'.$pluginParams->get('defaultVolume', '0.85').',
 					enableAutosize:			true,
 				});
-		});');
+			});');
 		
 			// Parse shortcodes in content
 				for ($i=$GLOBALS['plg_pb_mediael']; $i<$GLOBALS['plg_pb_mediael']+$hits; $i++) {
@@ -244,7 +245,7 @@ class plgContentBo_VideoJS extends JPlugin {
             $html .= '</object>';
         }
         
-        $html .='<p class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
+        $html .='<span class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
         
         if ($audio_m4a != "") {
             $html .= '<a href="'.$audio_m4a.'">M4A</a> ';
@@ -272,7 +273,7 @@ class plgContentBo_VideoJS extends JPlugin {
             $html .= '<a href="'.$video_ogg.'">Ogg</a><br>';
         }
     
-        $html .= '</p>';
+        $html .= '</span>';
         
         $html .= '</'.$media.'>';
                 

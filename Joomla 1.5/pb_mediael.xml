@@ -7,7 +7,7 @@
 	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
 	<authorEmail>pb@mrc-lmb.cam.ac.uk</authorEmail>
 	<authorUrl>www2.mrc-lmb.cam.ac.uk</authorUrl>
-	<version>0.4</version>
+	<version>0.5</version>
 	<description>PLUGIN DESC</description>
 	<files>
 		<filename plugin="pb_mediael">pb_mediael.php</filename>
