@@ -191,13 +191,13 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	
 	// Poster image
 	if ($image_visibility == "true" || $image_visibility == "1") {
-		$poster_html = ' poster="'.$image;
+		$poster_html = ' poster="'.$image.'"';
 	} else {
 		$poster_html = '';
 	}
 	
 	// HTML output
-	$html = '<'.$media.' width="'.$width.'" height="'.$height.'" controls="controls"'.$autoplay_html.$preload_html.$loop_html.$poster_html.'">';
+	$html = '<'.$media.' width="'.$width.'" height="'.$height.'" controls="controls"'.$autoplay_html.$preload_html.$loop_html.$poster_html.'>';
 	
 	if ($audio_m4a != "") {
 		$html .= '<source src="'.$audio_m4a.'" type="audio/m4a" />';
