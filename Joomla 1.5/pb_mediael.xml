@@ -58,9 +58,10 @@
 			<option value="opaque">opaque</option>
 			<option value="transparent">transparent</option>
 		</param>
-		<param name="download" type="radio" default="0" label="LABEL DOWNLOAD" description="DESC DOWNLOAD">
+		<param name="downloadlinks" type="radio" default="0" label="LABEL DOWNLOADLINKS" description="DESC DOWNLOADLINKS">
 			<option value="0">No</option>
 			<option value="1">Yes</option>
 		</param>
+		<param name="linktext" type="text" default="Download links:" label="LABEL LINKTEXT" description="DESC LINKTEXT" size="40" />
 	</params>
 </install>

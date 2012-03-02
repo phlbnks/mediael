@@ -63,10 +63,14 @@ function pluginPbMediaEl(&$row, &$params) {
 			}
 		}
 		
+		$downloadlinks = $pluginParams->get('downloadlinks','0');
+		if ($downloadlinks == "false" || $downloadlinks == "0") {
+			$showhidedownload = '$j(".PbMediaEl").hide();';
+		}
 		$document->addScriptDeclaration('
 		var $j = jQuery.noConflict();
 		$j(document).ready(function() {
-			'$download = $pluginParams->get('download'); if ($download == "false" || $download == "0") {'$j(".PbMediaEl").hide();'}'
+			'.$showhidedownload.'
 			$j("video,audio").mediaelementplayer({
 				startVolume: 			'.$pluginParams->get('defaultVolume', '0.85').',
 				enableAutosize:			true,
@@ -117,6 +121,7 @@ function contentPbMediaEl_getParams($videoParams, $pluginParams) {
 	$videoParamsList['image'] 				= $pluginParams->get('image');
 	$videoParamsList['image_visibility'] 	= $pluginParams->get('image_visibility');
 	$videoParamsList['flash'] 				= $pluginParams->get('flash');
+	$videoParamsList['linktext'] 			= $pluginParams->get('linktext');
 	
 	$items = explode(' ', $videoParams);
 	
@@ -148,13 +153,14 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	$video_mov			= $videoParamsList['video_mov'];
 	$video_webm			= $videoParamsList['video_webm'];
 	$video_ogg			= $videoParamsList['video_ogg'];
+	$link_text			= $videoParamsList['linktext'];
 	$flash				= $videoParamsList['flash'];
 	$image 				= $videoParamsList['image'];
 	$image_visibility	= $videoParamsList['image_visibility'];
 	$wmode				= $pluginParams->get('wmode', 'default');
 	$uri_flash			= '';
 	$uri_image			= '';
-	
+		
 	// Add URI for local flash video
 	if (stripos($flash, 'http://') === false) {
 		$uri_flash = JURI::base();		
@@ -244,7 +250,7 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	
 	$html .= '</'.$media.'>';
 	
-	$html .='<p class="PbMediaEl"><strong>If you cannot see the media above - download here: </strong>';
+	$html .='<p class="PbMediaEl">'.$linktext.' ';
 	
 	if ($audio_m4a != "") {
 		$html .= '<a href="'.$audio_m4a.'">M4A</a> ';
@@ -278,3 +284,4 @@ function contentPbMediaEl_createHTML($id, &$pluginParams, &$videoParamsList) {
 	return $html;
 	
 }
+?>
