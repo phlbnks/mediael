@@ -45,7 +45,7 @@ function pluginPbMediaEl(&$row, &$params) {
 			}
 		}
 		if (!$foundJqueryScripts) {
-			$document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
+			$document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
 		}
 		$foundMediaelScripts = false;
 		for ($i = 0; $i<count($scripts); $i++) {
