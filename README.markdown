@@ -1,5 +1,12 @@
 MediaEl - [MediaElement.js HTML5 Video Player plugin for Joomla]
 ==================================================
+
+Please be aware
+---------------
+I cannot currently support / continue development of this plugin. I am looking for a developer(s) to take on this as there seems to be a lot of interest in mediaelement.js for Joomla. Please get in touch / fork and let me know and we can sort out redirecting people.
+
+
+
 Version 0.5
 
 HTML5 <video> / <audio> code generator with fallback to Flash and Silverlight - if desired. 
